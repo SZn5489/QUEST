@@ -1,0 +1,6 @@
+{"type": "record", "name": "Advertiser", "fields": [
+    {"name": "a_id", "type": "long"},
+    {"name": "a_email", "type": "string"},
+    {"name": "a_name", "type": "string"}
+    ]
+}

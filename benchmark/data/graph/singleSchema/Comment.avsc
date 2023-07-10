@@ -1,0 +1,12 @@
+{
+  "type": "record",
+  "name": "Comment",
+  "fields": [
+    { "name": "c_id", "type": "long" },
+    { "name": "c_creationDate", "type":"string"},
+    { "name": "c_browserUsed", "type": "string" },
+    { "name": "c_locationIp", "type": "string" },
+    { "name": "c_content", "type": "string" },
+    { "name": "c_length", "type": "int" }
+  ]
+}

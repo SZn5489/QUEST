@@ -1,0 +1,6 @@
+{"type": "record", "name": "Organization", "fields": [
+    {"name": "or_id", "type": "long"},
+    {"name": "or_type", "type": "string"},
+    {"name": "or_name", "type": "string"},
+    {"name": "or_url", "type": "string"}
+]}

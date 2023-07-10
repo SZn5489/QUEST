@@ -1,0 +1,14 @@
+{
+    "type": "record",
+    "name": "WordSet",
+    "fields": [
+        {
+            "name": "w_id",
+            "type": "long"
+        },
+        {
+            "name": "w_cid",
+            "type": "long"
+        }
+    ]
+}

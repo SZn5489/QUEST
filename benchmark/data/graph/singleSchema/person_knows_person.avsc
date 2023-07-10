@@ -1,0 +1,5 @@
+{"type": "record", "name": "Knows", "fields": [
+    {"name": "know_pid", "type": "long"},
+    {"name": "know_kpid", "type": "long"},
+    {"name": "know_creationDate", "type": "string"}
+]}

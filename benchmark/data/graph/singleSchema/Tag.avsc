@@ -1,0 +1,9 @@
+{
+    "type": "record",
+    "name": "Tag",
+    "fields": [
+        {"name": "t_id","type": "long","order": "ignore"},
+        {"name": "t_name","type": "string"},
+        {"name": "t_url","type": "string"}
+    ]
+}

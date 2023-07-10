@@ -1,0 +1,14 @@
+{
+    "type": "record",
+    "name": "Word",
+    "fields": [
+        {
+            "name": "wo_wid",
+            "type": "long"
+        },
+        {
+            "name": "wo_word",
+            "type": "string"
+        }
+    ]
+}

@@ -1,0 +1,144 @@
+{
+    "type": "record",
+    "name": "StudyAt",
+    "fields": [
+        {
+            "name": "st_pid",
+            "type": "long"
+        },
+        {
+            "name": "st_organid",
+            "type": "long"
+        },
+        {
+            "name": "st_classYear",
+            "type": "string"
+        },
+        {
+            "name": "UniversityList",
+            "type": {
+                "type": "array",
+                "items": {
+                    "type": "record",
+                    "name": "University",
+                    "fields": [
+                        {
+                            "name": "or_id",
+                            "type": "long"
+                        },
+                        {
+                            "name": "or_type",
+                            "type": "string"
+                        },
+                        {
+                            "name": "or_name",
+                            "type": "string"
+                        },
+                        {
+                            "name": "or_url",
+                            "type": "string"
+                        },
+                        {
+                            "name": "IsLocatedInList",
+                            "type": {
+                                "type": "array",
+                                "items": {
+                                    "type": "record",
+                                    "name": "IsLocatedIn",
+                                    "fields": [
+                                        {
+                                            "name": "is_organization_id",
+                                            "type": "long"
+                                        },
+                                        {
+                                            "name": "is_place_id",
+                                            "type": "long"
+                                        },
+                                        {
+                                            "name": "CityList",
+                                            "type": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "record",
+                                                    "name": "City",
+                                                    "fields": [
+                                                        {
+                                                            "name": "city_id",
+                                                            "type": "long",
+                                                            "order": "ignore"
+                                                        },
+                                                        {
+                                                            "name": "city_name",
+                                                            "type": "string"
+                                                        },
+                                                        {
+                                                            "name": "city_url",
+                                                            "type": "string"
+                                                        },
+                                                        {
+                                                            "name": "city_type",
+                                                            "type": "string"
+                                                        },
+                                                        {
+                                                            "name": "IsPartOfList",
+                                                            "type": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "record",
+                                                                    "name": "IsPartOf",
+                                                                    "fields": [
+                                                                        {
+                                                                            "name": "is_cityId",
+                                                                            "type": "long"
+                                                                        },
+                                                                        {
+                                                                            "name": "is_countryId",
+                                                                            "type": "long"
+                                                                        },
+                                                                        {
+                                                                            "name": "CountryList",
+                                                                            "type": {
+                                                                                "type": "array",
+                                                                                "items": {
+                                                                                    "type": "record",
+                                                                                    "name": "Country",
+                                                                                    "fields": [
+                                                                                        {
+                                                                                            "name": "country_id",
+                                                                                            "type": "long",
+                                                                                            "order": "ignore"
+                                                                                        },
+                                                                                        {
+                                                                                            "name": "country_name",
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        {
+                                                                                            "name": "country_url",
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        {
+                                                                                            "name": "country_type",
+                                                                                            "type": "string"
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}

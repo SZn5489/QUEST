@@ -1,0 +1,14 @@
+{
+    "type": "record",
+    "name": "HasType",
+    "fields": [
+        {
+            "name": "has_tagId",
+            "type": "long"
+        },
+        {
+            "name": "has_tagClassId",
+            "type": "long"
+        }
+    ]
+}

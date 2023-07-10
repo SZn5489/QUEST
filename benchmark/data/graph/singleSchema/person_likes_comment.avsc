@@ -1,0 +1,9 @@
+{
+    "type": "record",
+    "name": "LikesComment",
+    "fields": [
+        { "name": "l_personId", "type": "long" },
+        { "name": "l_commentId", "type": "long" },
+        { "name": "l_createDate", "type": "string" }
+    ]
+}

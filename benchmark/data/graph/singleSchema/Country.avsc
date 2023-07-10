@@ -1,0 +1,10 @@
+{
+    "type": "record",
+    "name": "Country",
+    "fields": [
+        {"name": "country_id","type": "long","order": "ignore"},
+        {"name": "country_name","type": "string"},
+        {"name": "country_url","type": "string"},
+        {"name": "country_type","type": "string"}
+    ]
+}

@@ -1,0 +1,112 @@
+{"type": "record","name": "Person","fields": [
+        {"name": "p_id","type": "long","order": "ignore"},
+        {"name": "p_firstName","type": "string"},
+        {"name": "p_lastName","type": "string"},
+        {"name": "p_gender","type": "string"},
+        {"name": "p_birthday","type": "string"},
+        {"name": "p_creationDate","type": "string"},
+        {"name": "p_locationIP","type": "string"},
+        {"name": "p_browserUsed","type": "string"},
+        {"name": "HasInterestList", "type":{"type": "array", "items": {
+            "type": "record", "name": "HasInterest", "fields": [
+                {"name": "hi_personId", "type": "long"},
+                {"name": "hi_tagId", "type": "long"}
+            ]
+        }}},
+        {"name": "KnowsList", "type": {"type": "array", "items":{
+            "type": "record", "name": "Knows", "fields": [
+                {"name": "know_pid", "type": "long"},
+                {"name": "know_kpid", "type": "long"},
+                {"name": "know_creationDate", "type": "string"}
+            ]
+        }}},
+        {"name": "StudyAtList", "type": {"type": "array", "items": {
+            "type": "record",
+            "name": "StudyAt",
+            "fields":[
+                {"name": "st_pid", "type": "long"},
+                {"name": "st_organid", "type": "long"},
+                {"name": "st_classYear", "type": "string"},
+                {"name": "UniversityList", "type":{"type": "array", "items":{
+                    "type": "record", "name": "University", "fields":[
+                        {"name": "or_id", "type": "long"},
+                        {"name": "or_type", "type": "string"},
+                        {"name": "or_name", "type": "string"},
+                        {"name": "or_url", "type": "string"},
+                        {"name": "IsLocatedInList", "type": {"type": "array", "items": {
+                            "type": "record", "name": "IsLocatedIn", "fields": [
+                                {"name": "is_organization_id", "type": "long"},
+                                {"name": "is_place_id", "type": "long"},
+                                {"name": "CityList", "type": {"type": "array", "items":{
+                                    "type": "record", "name": "City", "fields": [
+                                        {"name": "city_id","type": "long","order": "ignore"},
+                                        {"name": "city_name","type": "string"},
+                                        {"name": "city_url","type": "string"},
+                                        {"name": "city_type","type": "string"},
+                                        {"name": "IsPartOfList", "type": {"type": "array", "items": {
+                                            "type": "record", "name": "IsPartOf", "fields":[
+                                                {"name": "is_cityId", "type": "long"},
+                                                {"name": "is_countryId", "type": "long"},
+                                                {"name": "CountryList", "type": {"type": "array", "items":{
+                                                    "type":"record", "name": "Country", "fields": [
+                                                        {"name": "country_id","type": "long","order": "ignore"},
+                                                        {"name": "country_name","type": "string"},
+                                                        {"name": "country_url","type": "string"},
+                                                        {"name": "country_type","type": "string"}
+                                                    ]
+                                                }}}
+                                            ]
+                                        }}}
+                                    ]
+                                }}}
+                            ]
+                        }}}
+                    ]
+                }}}
+            ]
+        }}},
+        {"name": "LikesCommentList", "type": {"type": "array", "items": {
+            "type": "record", "name": "LikesComment", "fields":[
+                { "name": "l_personId", "type": "long" },
+                { "name": "l_commentId", "type": "long" },
+                { "name": "l_createDate", "type": "string"},
+                {"name": "CommentList", "type":{"type": "array", "items": {
+                    "type": "record", "name": "Comment", "fields":[
+                        { "name": "c_id", "type": "long" },
+                        { "name": "c_creationDate", "type":"string"},
+                        { "name": "c_browserUsed", "type": "string" },
+                        { "name": "c_locationIp", "type": "string" },
+                        { "name": "c_content", "type": "string" },
+                        { "name": "c_length", "type": "int" },
+                        {"name": "HasTagList", "type": {"type": "array", "items": {
+                            "type": "record","name": "HasTag","fields": [
+                                {"name": "ht_commentId","type": "long"},
+                                {"name": "ht_tagId","type": "long"},
+                                {"name": "TagList", "type": {"type": "array", "items": {
+                                    "type": "record","name": "Tag","fields": [
+                                        {"name": "t_id","type": "long","order": "ignore"},
+                                        {"name": "t_name","type": "string"},
+                                        {"name": "t_url","type": "string"},
+                                        {"name": "HasTypeList", "type": {"type": "array", "items":{
+                                            "type": "record","name": "HasType","fields": [
+                                                {"name": "has_tagId","type": "long"},
+                                                {"name": "has_tagClassId","type": "long"},
+                                                {"name": "TagClassList", "type": {"type": "array", "items": {
+                                                    "type": "record","name": "TagClass","fields": [
+                                                        {"name": "tc_id","type": "long"},
+                                                        {"name": "tc_name","type": "string"},
+                                                        {"name": "tc_url","type": "string"}
+                                                    ]
+                                                }}}
+                                            ]
+                                        }}}
+                                    ]
+                                }}}
+                            ]
+                        }}}
+                    ]
+                }}}
+            ]
+        }}}
+    ]
+}

@@ -1,0 +1,5 @@
+{"type": "record","name": "StudyAt","fields":[
+    {"name": "st_pid", "type": "long"},
+    {"name": "st_organid", "type": "long"},
+    {"name": "st_classYear", "type": "string"}
+]}

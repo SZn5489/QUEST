@@ -1,0 +1,43 @@
+{
+    "type": "record",
+    "name": "IsPartOf",
+    "fields": [
+        {
+            "name": "is_cityId",
+            "type": "long"
+        },
+        {
+            "name": "is_countryId",
+            "type": "long"
+        },
+        {
+            "name": "CountryList",
+            "type": {
+                "type": "array",
+                "items": {
+                    "type": "record",
+                    "name": "Country",
+                    "fields": [
+                        {
+                            "name": "country_id",
+                            "type": "long",
+                            "order": "ignore"
+                        },
+                        {
+                            "name": "country_name",
+                            "type": "string"
+                        },
+                        {
+                            "name": "country_url",
+                            "type": "string"
+                        },
+                        {
+                            "name": "country_type",
+                            "type": "string"
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}

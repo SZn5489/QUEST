@@ -1,0 +1,8 @@
+{
+    "type": "record",
+    "name": "IsLocatedIn",
+    "fields": [
+        {"name": "is_organization_id", "type": "long"},
+        {"name": "is_place_id", "type": "long"}
+    ]
+}

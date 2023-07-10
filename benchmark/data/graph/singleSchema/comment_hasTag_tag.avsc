@@ -1,0 +1,14 @@
+{
+    "type": "record",
+    "name": "HasTag",
+    "fields": [
+        {
+            "name": "ht_commentId",
+            "type": "long"
+        },
+        {
+            "name": "ht_tagId",
+            "type": "long"
+        }
+    ]
+}

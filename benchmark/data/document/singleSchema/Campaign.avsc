@@ -1,0 +1,9 @@
+    {
+    "type": "record",
+    "name": "Campaign",
+    "fields":[
+        {"name": "c_id", "type": "long"},
+        {"name": "c_aid", "type": "long"},
+        {"name": "c_budget", "type": "float"}
+    ]
+}

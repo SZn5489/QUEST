@@ -1,0 +1,39 @@
+{
+    "type": "record",
+    "name": "Person",
+    "fields": [
+        {
+            "name": "p_id",
+            "type": "long",
+            "order": "ignore"
+        },
+        {
+            "name": "p_firstName",
+            "type": "string"
+        },
+        {
+            "name": "p_lastName",
+            "type": "string"
+        },
+        {
+            "name": "p_gender",
+            "type": "string"
+        },
+        {
+            "name": "p_birthday",
+            "type": "string"
+        },
+        {
+            "name": "p_creationDate",
+            "type": "string"
+        },
+        {
+            "name": "p_locationIP",
+            "type": "string"
+        },
+        {
+            "name": "p_browserUsed",
+            "type": "string"
+        }
+    ]
+}

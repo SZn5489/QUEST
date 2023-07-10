@@ -1,0 +1,59 @@
+{
+    "type": "record",
+    "name": "Person",
+    "fields": [
+        {
+            "name": "p_id",
+            "type": "long",
+            "order": "ignore"
+        },
+        {
+            "name": "p_firstName",
+            "type": "string"
+        },
+        {
+            "name": "p_lastName",
+            "type": "string"
+        },
+        {
+            "name": "p_gender",
+            "type": "string"
+        },
+        {
+            "name": "p_birthday",
+            "type": "string"
+        },
+        {
+            "name": "p_creationDate",
+            "type": "string"
+        },
+        {
+            "name": "p_locationIP",
+            "type": "string"
+        },
+        {
+            "name": "p_browserUsed",
+            "type": "string"
+        },
+        {
+            "name": "HasInterestList",
+            "type": {
+                "type": "array",
+                "items": {
+                    "type": "record",
+                    "name": "HasInterest",
+                    "fields": [
+                        {
+                            "name": "hi_personId",
+                            "type": "long"
+                        },
+                        {
+                            "name": "hi_tagId",
+                            "type": "long"
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}

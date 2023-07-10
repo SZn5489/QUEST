@@ -1,0 +1,49 @@
+{"type": "record", "name": "Advertiser", "fields": [
+    {"name": "a_id", "type": "long"},
+    {"name": "a_email", "type": "string"},
+    {"name": "a_name", "type": "string"},
+    {"name": "CampaignList", "type": {"type": "array", "items": {
+        "type": "record",
+        "name": "Campaign",
+        "fields":[
+            {"name": "c_id", "type": "long"},
+            {"name": "c_aid", "type": "long"},
+            {"name": "c_budget", "type": "float"},
+            {"name": "WordSetList", "type":{"type": "array", "items": {
+                "type": "record",
+                "name": "WordSet",
+                "fields": [
+                    {"name": "w_id", "type":"long"},
+                    {"name": "w_cid", "type":"long"},
+                    {"name": "WordList", "type": {"type": "array", "items": {
+                        "type": "record",
+                        "name": "Word",
+                        "fields": [
+                            {"name": "wo_wid", "type": "long"},
+                            {"name": "wo_word", "type": "string"}
+                        ]
+                    }}}
+                ]
+            }}},
+            {"name": "ClickList", "type":{"type": "array", "items": {
+                "type": "record",
+                "name": "Click",
+                "fields": [
+                    {"name": "cl_id", "type": "long"},
+                    {"name": "cl_cid", "type": "long"},
+                    {"name": "cl_fee", "type": "float"},
+                    {"name": "cl_date", "type": "string"},
+                    {"name": "PersonClickList", "type": {"type": "array", "items": {
+                        "type": "record",
+                        "name": "PersonClick",
+                        "fields":[
+                            {"name": "p_id", "type":"long"},
+                            {"name": "p_clid", "type":"long"}
+                        ]
+                    }}}
+                ]
+            }}}
+        ]
+    }}}
+
+]}

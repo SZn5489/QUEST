@@ -1,0 +1,9 @@
+{
+    "type": "record",
+    "name": "TagClass",
+    "fields": [
+        {"name": "tc_id","type": "long"},
+        {"name": "tc_name","type": "string"},
+        {"name": "tc_url","type": "string"}
+    ]
+}

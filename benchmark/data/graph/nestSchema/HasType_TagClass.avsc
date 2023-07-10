@@ -1,0 +1,13 @@
+{
+    "type": "record","name": "HasType","fields": [
+        {"name": "has_tagId","type": "long"},
+        {"name": "has_tagClassId","type": "long"},
+        {"name": "TagClassList", "type": {"type": "array", "items": {
+            "type": "record","name": "TagClass","fields": [
+                {"name": "tc_id","type": "long"},
+                {"name": "tc_name","type": "string"},
+                {"name": "tc_url","type": "string"}
+            ]
+        }}}
+    ]
+}

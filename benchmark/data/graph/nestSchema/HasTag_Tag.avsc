@@ -1,0 +1,83 @@
+{
+    "type": "record",
+    "name": "HasTag",
+    "fields": [
+        {
+            "name": "ht_commentId",
+            "type": "long"
+        },
+        {
+            "name": "ht_tagId",
+            "type": "long"
+        },
+        {
+            "name": "TagList",
+            "type": {
+                "type": "array",
+                "items": {
+                    "type": "record",
+                    "name": "Tag",
+                    "fields": [
+                        {
+                            "name": "t_id",
+                            "type": "long",
+                            "order": "ignore"
+                        },
+                        {
+                            "name": "t_name",
+                            "type": "string"
+                        },
+                        {
+                            "name": "t_url",
+                            "type": "string"
+                        },
+                        {
+                            "name": "HasTypeList",
+                            "type": {
+                                "type": "array",
+                                "items": {
+                                    "type": "record",
+                                    "name": "HasType",
+                                    "fields": [
+                                        {
+                                            "name": "has_tagId",
+                                            "type": "long"
+                                        },
+                                        {
+                                            "name": "has_tagClassId",
+                                            "type": "long"
+                                        },
+                                        {
+                                            "name": "TagClassList",
+                                            "type": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "record",
+                                                    "name": "TagClass",
+                                                    "fields": [
+                                                        {
+                                                            "name": "tc_id",
+                                                            "type": "long"
+                                                        },
+                                                        {
+                                                            "name": "tc_name",
+                                                            "type": "string"
+                                                        },
+                                                        {
+                                                            "name": "tc_url",
+                                                            "type": "string"
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}

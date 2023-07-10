@@ -1,0 +1,34 @@
+{
+    "type": "record",
+    "name": "WordSet",
+    "fields": [
+        {
+            "name": "w_id",
+            "type": "long"
+        },
+        {
+            "name": "w_cid",
+            "type": "long"
+        },
+        {
+            "name": "WordList",
+            "type": {
+                "type": "array",
+                "items": {
+                    "type": "record",
+                    "name": "Word",
+                    "fields": [
+                        {
+                            "name": "wo_wid",
+                            "type": "long"
+                        },
+                        {
+                            "name": "wo_word",
+                            "type": "string"
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}

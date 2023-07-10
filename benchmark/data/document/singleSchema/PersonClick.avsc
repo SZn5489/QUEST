@@ -1,0 +1,14 @@
+{
+    "type": "record",
+    "name": "PersonClick",
+    "fields": [
+        {
+            "name": "p_id",
+            "type": "long"
+        },
+        {
+            "name": "p_clid",
+            "type": "long"
+        }
+    ]
+}

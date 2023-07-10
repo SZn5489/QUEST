@@ -1,0 +1,7 @@
+{"type":"record", "name": "Person", "fields":[
+    {"name": "p_id", "type": "long"},
+    {"name": "p_fname", "type": "string"},
+    {"name": "p_lname", "type": "string"},
+    {"name": "p_credit_score", "type": "int"},
+    {"name": "p_wallet_banlance", "type": "int"}
+]}

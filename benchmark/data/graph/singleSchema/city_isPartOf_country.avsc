@@ -1,0 +1,14 @@
+{
+    "type": "record",
+    "name": "IsPartOf",
+    "fields": [
+        {
+            "name": "is_cityId",
+            "type": "long"
+        },
+        {
+            "name": "is_countryId",
+            "type": "long"
+        }
+    ]
+}

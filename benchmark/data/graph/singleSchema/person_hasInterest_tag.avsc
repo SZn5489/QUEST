@@ -1,0 +1,4 @@
+{"type": "record", "name": "HasInterest", "fields": [
+    {"name": "hi_personId", "type": "long"},
+    {"name": "hi_tagId", "type": "long"}
+]}
