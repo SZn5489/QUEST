@@ -1,0 +1,11 @@
+person.csv id:ID(Relational_Person)|first_name:STRING|last_name:STRING|credit_score:INT|wallet_balances:INT
+document/advertiser.csv id:ID(Doc_Advertiser)|email:STRING|name:STRING
+document/campaign.csv id:ID(Doc_Campaign)|aid:INT|budget:FLOAT
+document/clicks.csv id:ID(Doc_Click)|cid:INT|fee:FLOAT|date:STRING
+document/person_click.csv :START_ID(Person)|:END_ID(Doc_Click)|clickDate:STRING
+document/word.csv id:ID(Doc_Word)|wsid:INT|word:STRING
+document/wordset.csv id:ID(Doc_Wordset)|cid:INT
+document/campaign_hasCreator_advertiser.csv :START_ID(Doc_Campaign)|:END_ID(Doc_Advertiser)
+document/clicks_belongsTo_campaign.csv :START_ID(Doc_Click)|:END_ID(Doc_Campaign)
+document/word_belongsTo_wordset.csv :START_ID(Doc_Word)|:END_ID(Doc_Wordset)
+document/wordset_belongsTo_campaign.csv :START_ID(Doc_Wordset)|:END_ID(Doc_Campaign)
