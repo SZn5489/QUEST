@@ -1,0 +1,18 @@
+{
+	"config" : { "haltOnError": false },
+	"source": { "file":  { "path": "{path to data dir}/data/relation/person.csv" } },
+	"extractor": {"csv": { "separator": "|", 
+	                       "columns": [ "p_id:long", "p_fname:string", "p_lname:string", "p_credit_score:integer", "p_wallet_banlance:integer" ],
+			               "columnsOnFirstLine": false} },
+	"transformers": [ { "field": { "fieldName": "@class", "value": "Person_r" } } ],
+	"loader": {
+		"orientdb": {
+		"dbURL": "plocal:../databases/test",
+		"dbType": "document", 
+		"classes": [ { "name": "Person_r" } ],
+		"indexes": [ { "class": "Person_r", 
+			           "fields": ["p_id:long"], 
+			           "type": "UNIQUE" } ]
+		}
+	}
+}
