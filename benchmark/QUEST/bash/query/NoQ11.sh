@@ -1,0 +1,1 @@
+java -jar ../jar/NoQ11.jar ../../data/graph/ China Person Person

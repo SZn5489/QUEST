@@ -1,0 +1,1 @@
+java -jar ../jar/RelationGen.jar ../../../origin_data/relation/person.tbl ../../data/relation/person.avsc ../../data/relation/result/ 40960 10000
