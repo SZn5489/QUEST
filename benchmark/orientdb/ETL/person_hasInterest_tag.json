@@ -1,0 +1,22 @@
+{
+	"config" : { "haltOnError": false },
+	"source": { "file":  { "path": "{path to data dir}/data/ldbc/person_hasInterest_tag.csv" } },
+	"extractor": {"csv": { "separator": "|", 
+	                       "columns": ["p_id:long", "t_id:long" ],
+			               "columnsOnFirstLine": false} },
+	"transformers": [ { "merge": { "joinFieldName": "p_id", "lookup": "Person.p_id" } },
+					  { "vertex": { "class": "Person" } }, 
+                   	  { "edge": { "class": "HasInterest", "joinFieldName": "t_id", "lookup": "Tag.t_id" } } ],
+	"loader": {
+		"orientdb": {
+		"dbURL": "plocal:../databases/ldbc",
+		"dbType": "graph",
+		"classes": [ { "name": "Person", "extends": "V" },
+		             { "name": "Tag", "extends": "V" },
+					 { "name": "HasInterest", "extends": "E" } ], 
+		"indexes": [ { "class": "Person", 
+			           "fields": ["p_id:long"], 
+			           "type": "UNIQUE" } ]
+		}
+	}
+}

@@ -1,0 +1,22 @@
+{
+	"config" : { "haltOnError": false },
+	"source": { "file":  { "path": "{path to data dir}/data/ldbc/university_isLocatedIn_city.csv" } },
+	"extractor": {"csv": { "separator": "|", 
+	                       "columns": ["or_id:long", "city_id:long"],
+			               "columnsOnFirstLine": false} },
+	"transformers": [ { "merge": { "joinFieldName": "or_id", "lookup": "University.or_id" } },
+					  { "vertex": { "class": "University" } }, 
+                   	  { "edge": { "class": "IsLocatedIn", "joinFieldName": "city_id", "lookup": "City.city_id" } } ],
+	"loader": {
+		"orientdb": {
+		"dbURL": "plocal:../databases/ldbc",
+		"dbType": "graph",
+		"classes": [ { "name": "University", "extends": "V" },
+		             { "name": "City", "extends": "V" },
+					 { "name": "IsLocatedIn", "extends": "E" } ], 
+		"indexes": [ { "class": "University", 
+			           "fields": ["or_id:long"], 
+			           "type": "UNIQUE" } ]
+		}
+	}
+}

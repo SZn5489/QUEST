@@ -1,0 +1,18 @@
+{
+	"config" : { "haltOnError": false },
+	"source": { "file":  { "path": "{path to data dir}/data/ldbc/city.csv" } },
+	"extractor": {"csv": { "separator": "|", 
+	                       "columns": [ "city_id:long", "city_name:string", "city_url:string", "city_type:string" ],
+			               "columnsOnFirstLine": false} },
+	"transformers": [ { "vertex": { "class": "City" } } ],
+	"loader": {
+		"orientdb": {
+		"dbURL": "plocal:../databases/ldbc",
+		"dbType": "graph",
+		"classes": [ { "name": "City", "extends": "V" } ], 
+		"indexes": [ { "class": "City", 
+			           "fields": ["city_id:long"], 
+			           "type": "UNIQUE" } ]
+		}
+	}
+}

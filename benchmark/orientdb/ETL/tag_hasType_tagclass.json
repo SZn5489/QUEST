@@ -1,0 +1,22 @@
+{
+	"config" : { "haltOnError": false },
+	"source": { "file":  { "path": "{path to data dir}/data/ldbc/tag_hasType_tagclass.csv" } },
+	"extractor": {"csv": { "separator": "|", 
+	                       "columns": ["t_id:long", "tc_id:long"],
+			               "columnsOnFirstLine": false} },
+	"transformers": [ { "merge": { "joinFieldName": "t_id", "lookup": "Tag.t_id" } },
+	                  { "vertex": { "class": "Tag"} }, 
+	                  { "edge": { "class": "HasType", "joinFieldName": "tc_id", "lookup": "TagClass.tc_id" } } ],
+	"loader": {
+		"orientdb": {
+		"dbURL": "plocal:../databases/ldbc",
+		"dbType": "graph",
+		"classes": [ { "name": "Tag", "extends": "V" }, 
+		             { "name": "TagClass", "extends": "V"},
+		             { "name": "HasType", "extends": "E" } ], 
+		"indexes": [ { "class": "Tag", 
+			           "fields": ["t_id:long"], 
+			           "type": "UNIQUE" } ]
+		}
+	}
+}

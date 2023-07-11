@@ -1,0 +1,22 @@
+{
+	"config" : { "haltOnError": false },
+	"source": { "file":  { "path": "{path to data dir}/data/ldbc/city_isPartOf_country.csv" } },
+	"extractor": {"csv": { "separator": "|", 
+	                       "columns": ["city_id:long", "co_id:long"],
+			               "columnsOnFirstLine": false} },
+	"transformers": [ { "merge": { "joinFieldName": "city_id", "lookup": "City.city_id" } },
+					  { "vertex": { "class": "City" } }, 
+                   	  { "edge": { "class": "IsPartOf", "joinFieldName": "co_id", "lookup": "Country.co_id" } } ],
+	"loader": {
+		"orientdb": {
+		"dbURL": "plocal:../databases/ldbc",
+		"dbType": "graph",
+		"classes": [ { "name": "City", "extends": "V" },
+		             { "name": "Country", "extends": "V" },
+					 { "name": "IsPartOf", "extends": "E" } ], 
+		"indexes": [ { "class": "City", 
+			           "fields": ["city_id:long"], 
+			           "type": "UNIQUE" } ]
+		}
+	}
+}

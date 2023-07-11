@@ -1,0 +1,21 @@
+{
+	"config" : { "haltOnError": false },
+	"source": { "file":  { "path": "{path to data dir}/data/document/person_click.csv" } },
+	"extractor": {"csv": { "separator": "|", 
+	                       "columns": [ "p_id:long", "p_clid:long", "p_clickDate:string" ],
+			               "columnsOnFirstLine": false} },
+	"transformers": [ { "vertex": { "class": "PersonClick" } },
+			{ "edge": { "class": "PersonClickList", "joinFieldName": "p_clid", "lookup": "Click.cl_id", "direction": "in" } } ],
+	"loader": {
+		"orientdb": {
+		"dbURL": "plocal:../databases/ldbc",
+		"dbType": "graph", 
+		"classes": [ { "name": "Click", "extends": "V" },
+					 { "name": "PersonClick", "extends": "V" },
+					 { "name": "PersonClickList", "extends": "E" } ],
+		"indexes": [ { "class": "PersonClick", 
+			           "fields": ["p_id:long"], 
+			           "type": "UNIQUE" } ]
+		}
+	}
+}

@@ -1,0 +1,22 @@
+{
+	"config" : { "haltOnError": false },
+	"source": { "file":  { "path": "{path to data dir}/data/ldbc/person_studyAt_university.csv" } },
+	"extractor": {"csv": { "separator": "|", 
+	                       "columns": ["p_id:long", "or_id:long", "st_classYear:string" ],
+			               "columnsOnFirstLine": false} },
+	"transformers": [ { "merge": { "joinFieldName": "p_id", "lookup": "Person.p_id" } },
+					  { "vertex": { "class": "Person" } }, 
+                   	  { "edge": { "class": "StudyAt", "joinFieldName": "or_id", "lookup": "University.or_id" } } ],
+	"loader": {
+		"orientdb": {
+		"dbURL": "plocal:../databases/ldbc",
+		"dbType": "graph",
+		"classes": [ { "name": "Person", "extends": "V" },
+		             { "name": "University", "extends": "V" },
+					 { "name": "StudyAt", "extends": "E" } ], 
+		"indexes": [ { "class": "Person", 
+			           "fields": ["p_id:long"], 
+			           "type": "UNIQUE" } ]
+		}
+	}
+}

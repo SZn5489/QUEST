@@ -1,0 +1,22 @@
+{
+	"config" : { "haltOnError": false },
+	"source": { "file":  { "path": "{path to data dir}/data/ldbc/comment_hasTag_tag.csv" } },
+	"extractor": {"csv": { "separator": "|", 
+	                       "columns": ["c_id:long", "t_id:long"],
+			               "columnsOnFirstLine": false} },
+	"transformers": [ { "merge": { "joinFieldName": "c_id", "lookup": "Comment.c_id" } },
+				      { "vertex": { "class": "Comment" } }, 
+                   	  { "edge": { "class": "HasTag", "joinFieldName": "t_id", "lookup": "Tag.t_id" } } ],
+	"loader": {
+		"orientdb": {
+		"dbURL": "plocal:../databases/ldbc",
+		"dbType": "graph",
+		"classes": [ { "name": "Comment", "extends": "V" },
+		             { "name": "Tag", "extends": "V" },
+					 { "name": "HasTag", "extends": "E" } ], 
+		"indexes": [ { "class": "Comment", 
+			           "fields": ["c_id:long"], 
+			           "type": "UNIQUE" } ]
+		}
+	}
+}

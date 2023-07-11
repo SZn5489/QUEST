@@ -1,0 +1,18 @@
+{
+	"config" : { "haltOnError": false },
+	"source": { "file":  { "path": "{path to data dir}/data/ldbc/tag.csv" } },
+	"extractor": {"csv": { "separator": "|", 
+	                       "columns": ["t_id:long", "t_name:string", "t_url:string"],
+			               "columnsOnFirstLine": false} },
+	"transformers": [ { "vertex": { "class": "Tag" } } ],
+	"loader": {
+		"orientdb": {
+		"dbURL": "plocal:../databases/ldbc",
+		"dbType": "graph",
+		"classes": [ { "name": "Tag", "extends": "V" } ], 
+		"indexes": [ { "class": "Tag", 
+			           "fields": ["t_id:long"], 
+			           "type": "UNIQUE" } ]
+		}
+	}
+}

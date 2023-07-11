@@ -1,0 +1,21 @@
+{
+	"config" : { "haltOnError": false },
+	"source": { "file":  { "path": "{path to data dir}/data/document/clicks.csv" } },
+	"extractor": {"csv": { "separator": "|", 
+	                       "columns": [ "cl_id:long", "cl_cid:long", "cl_fee:float", "cl_date:string" ],
+			               "columnsOnFirstLine": false} },
+	"transformers": [ { "vertex": { "class": "Click" } },
+					  { "edge": { "class": "ClickList", "joinFieldName": "cl_cid", "lookup": "Campaign.c_id", "direction": "in" } } ],
+	"loader": {
+		"orientdb": {
+		"dbURL": "plocal:../databases/ldbc",
+		"dbType": "graph", 
+		"classes": [ { "name": "Campaign", "extends": "V" },
+					 { "name": "Click", "extends": "V" },
+					 { "name": "ClickList", "extends": "E" } ],
+		"indexes": [ { "class": "Click", 
+			           "fields": ["cl_id:long"], 
+			           "type": "UNIQUE" } ]
+		}
+	}
+}
