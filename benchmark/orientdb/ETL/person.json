@@ -1,0 +1,18 @@
+{
+	"config" : { "haltOnError": false },
+	"source": { "file":  { "path": "{path to data dir}/data/ldbc/person.csv" } },
+	"extractor": {"csv": { "separator": "|", 
+	                       "columns": [ "p_id:long", "p_firstName:string", "p_lastName:string", "p_gender:string", "p_birthday:string", "p_creationDate:string", "p_locationIP:string", "p_browserUsed:string" ],
+			               "columnsOnFirstLine": false} },
+	"transformers": [ { "vertex": { "class": "Person" } } ],
+	"loader": {
+		"orientdb": {
+		"dbURL": "plocal:../databases/ldbc",
+		"dbType": "graph",
+		"classes": [ { "name": "Person", "extends": "V" } ], 
+		"indexes": [ { "class": "Person", 
+			           "fields": ["p_id:long"], 
+			           "type": "UNIQUE" } ]
+		}
+	}
+}

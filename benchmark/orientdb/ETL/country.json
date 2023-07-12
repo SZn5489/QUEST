@@ -1,0 +1,18 @@
+{
+	"config" : { "haltOnError": false },
+	"source": { "file":  { "path": "{path to data dir}/data/ldbc/country.csv" } },
+	"extractor": {"csv": { "separator": "|", 
+	                       "columns": [ "co_id:long", "co_name:string", "co_url:string", "co_type:string" ],
+			               "columnsOnFirstLine": false} },
+	"transformers": [ { "vertex": { "class": "Country" } } ],
+	"loader": {
+		"orientdb": {
+		"dbURL": "plocal:../databases/ldbc",
+		"dbType": "graph",
+		"classes": [ { "name": "Country", "extends": "V" } ], 
+		"indexes": [ { "class": "Country", 
+			           "fields": ["co_id:long"], 
+			           "type": "UNIQUE" } ]
+		}
+	}
+}

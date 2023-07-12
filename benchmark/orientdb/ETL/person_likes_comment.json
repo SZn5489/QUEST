@@ -1,0 +1,22 @@
+{
+	"config" : { "haltOnError": false },
+	"source": { "file":  { "path": "{path to data dir}/data/ldbc/person_likes_comment.csv" } },
+	"extractor": {"csv": { "separator": "|", 
+	                       "columns": ["p_id:long", "c_id:long", "l_createDate:string"],
+			               "columnsOnFirstLine": false} },
+	"transformers": [ { "merge": { "joinFieldName": "p_id", "lookup": "Person.p_id" } },
+					  { "vertex": { "class": "Person" } }, 
+                   	  { "edge": { "class": "LikesComment", "joinFieldName": "c_id", "lookup": "Comment.c_id" } } ],
+	"loader": {
+		"orientdb": {
+		"dbURL": "plocal:../databases/ldbc",
+		"dbType": "graph",
+		"classes": [ { "name": "Person", "extends": "V" },
+		             { "name": "Comment", "extends": "V" },
+					 { "name": "LikesComment", "extends": "E" } ], 
+		"indexes": [ { "class": "Person", 
+			           "fields": ["p_id:long"], 
+			           "type": "UNIQUE" } ]
+		}
+	}
+}

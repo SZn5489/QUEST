@@ -1,0 +1,18 @@
+{
+	"config" : { "haltOnError": false },
+	"source": { "file":  { "path": "{path to data dir}/data/ldbc/university.csv" } },
+	"extractor": {"csv": { "separator": "|", 
+	                       "columns": [ "or_id:long", "or_type:string", "or_name:string", "or_url:string" ],
+			               "columnsOnFirstLine": false} },
+	"transformers": [ { "vertex": { "class": "University" } } ],
+	"loader": {
+		"orientdb": {
+		"dbURL": "plocal:../databases/ldbc",
+		"dbType": "graph",
+		"classes": [ { "name": "University", "extends": "V" } ], 
+		"indexes": [ { "class": "University", 
+			           "fields": ["or_id:long"], 
+			           "type": "UNIQUE" } ]
+		}
+	}
+}

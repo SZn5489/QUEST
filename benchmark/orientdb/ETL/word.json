@@ -1,0 +1,21 @@
+{
+	"config" : { "haltOnError": false },
+	"source": { "file":  { "path": "{path to data dir}/data/document/word.csv" } },
+	"extractor": {"csv": { "separator": "|", 
+	                       "columns": [ "wo_id:long", "wo_wid:long", "wo_word:string" ],
+			               "columnsOnFirstLine": false} },
+	"transformers": [ { "vertex": { "class": "Word" } },
+					  { "edge": { "class": "WordList", "joinFieldName": "wo_wid", "lookup": "WordSet.w_id", "direction": "in" } } ],
+	"loader": {
+		"orientdb": {
+		"dbURL": "plocal:../databases/ldbc",
+		"dbType": "graph", 
+		"classes": [ { "name": "WordSet", "extends": "V" },
+					 { "name": "Word", "extends": "V" },
+					 { "name": "WordList", "extends": "E" } ],
+		"indexes": [ { "class": "WordSet", 
+			           "fields": ["wo_id:long"], 
+			           "type": "UNIQUE" } ]
+		}
+	}
+}

@@ -1,0 +1,21 @@
+{
+	"config" : { "haltOnError": false },
+	"source": { "file":  { "path": "{path to data dir}/data/document/campaign.csv" } },
+	"extractor": {"csv": { "separator": "|", 
+	                       "columns": [ "c_id:long", "c_aid:long", "c_budget:float" ],
+			               "columnsOnFirstLine": false} },
+	"transformers": [ { "vertex": { "class": "Campaign" } },
+					  { "edge": { "class": "CampaignList", "joinFieldName": "c_aid", "lookup": "Advertiser.a_id", "direction": "in" } } ],
+	"loader": {
+		"orientdb": {
+		"dbURL": "plocal:../databases/ldbc",
+		"dbType": "graph", 
+		"classes": [ { "name": "Advertiser", "extends": "V" },
+					 { "name": "Campaign", "extends": "V" },
+					 { "name": "CampaignList", "extends": "E" } ], 
+		"indexes": [ { "class": "Campaign", 
+			           "fields": ["c_id:long"], 
+			           "type": "UNIQUE" } ]
+		}
+	}
+}

@@ -1,0 +1,18 @@
+{
+	"config" : { "haltOnError": false },
+	"source": { "file":  { "path": "{path to data dir}/data/document/advertiser.csv" } },
+	"extractor": {"csv": { "separator": "|", 
+	                       "columns": [ "a_id:long", "a_email:string", "a_name:string" ],
+			               "columnsOnFirstLine": false} },
+	"transformers": [ { "vertex": { "class": "Advertiser" } } ],
+	"loader": {
+		"orientdb": {
+		"dbURL": "plocal:../databases/ldbc",
+		"dbType": "graph", 
+		"classes": [ { "name": "Advertiser", "extends": "V" } ], 
+		"indexes": [ { "class": "Advertiser", 
+			           "fields": ["a_id:long"], 
+			           "type": "UNIQUE" } ]
+		}
+	}
+}

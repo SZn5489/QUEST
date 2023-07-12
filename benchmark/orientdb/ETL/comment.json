@@ -1,0 +1,18 @@
+{
+	"config" : { "haltOnError": false },
+	"source": { "file":  { "path": "{path to data dir}/data/ldbc/comment.csv" } },
+	"extractor": {"csv": { "separator": "|", 
+	                       "columns": ["c_id:long", "c_creationDate:string", "c_locationIp:string", "c_browserUsed:string", "c_content:string", "c_length:integer"],
+			               "columnsOnFirstLine": false} },
+	"transformers": [ {"vertex": { "class": "Comment" } } ],
+	"loader": {
+		"orientdb": {
+		"dbURL": "plocal:../databases/ldbc",
+		"dbType": "graph",
+		"classes": [ { "name": "Comment", "extends": "V" } ], 
+		"indexes": [ { "class": "Comment", 
+			           "fields": ["c_id:long"], 
+			           "type": "UNIQUE" } ]
+		}
+	}
+}

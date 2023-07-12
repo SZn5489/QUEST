@@ -1,0 +1,21 @@
+{
+	"config" : { "haltOnError": false },
+	"source": { "file":  { "path": "{path to data dir}/data/document/wordset.csv" } },
+	"extractor": {"csv": { "separator": "|", 
+	                       "columns": [ "w_id:long", "w_cid:long" ],
+			               "columnsOnFirstLine": false} },
+	"transformers": [ { "vertex": { "class": "WordSet" } },
+					  { "edge": { "class": "WordSetList", "joinFieldName": "w_cid", "lookup": "Campaign.c_id", "direction": "in" } } ],
+	"loader": {
+		"orientdb": {
+		"dbURL": "plocal:../databases/ldbc",
+		"dbType": "graph", 
+		"classes": [ { "name": "Campaign", "extends": "V" },
+					 { "name": "WordSet", "extends": "V" },
+					 { "name": "WordSetList", "extends": "E" } ],
+		"indexes": [ { "class": "WordSet", 
+			           "fields": ["w_id:long"], 
+			           "type": "UNIQUE" } ]
+		}
+	}
+}
