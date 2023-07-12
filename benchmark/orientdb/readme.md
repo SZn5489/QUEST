@@ -13,7 +13,7 @@
   You can launch the console in interactive mode by executing the console.sh for Linux OS systems or console.bat for Windows systems in the bin directory of your OrientDB installation. <br>
     ```
     $ cd $ORIENTDB_HOME/bin
-    $ ./console.sh<br>
+    $ ./console.sh
     
     OrientDB console v.X.X.X (build 0) www.orientdb.com
     Type 'HELP' to display all the commands supported.
