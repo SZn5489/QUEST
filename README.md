@@ -1,10 +1,8 @@
-CORES
+QUEST
 =====
 Introduction
 -----
-
-    This project, CORES (Column-Oriented Regeneration Embedding Scheme), aims at pushing high-selective filters down into the column-based storage, where each filter consists of several filtering conditions on a field. By applying the filtering conditions to the column scan in storage, it tends to reduce both the I/O and the deserialization cost by introducing a fine-gained composition based on bitset. It also generalizes this technique by two pair-wise operations rollup and drilldown, such that a series of conjunctive filters can effectively deliver their payloads in nested schema. It can be applied to the nested relational model especially when hierarchical entities are frequently required by adhoc queries.
-    This code is released under the Apache License, See LICENSE.txt and NOTICE.txt for more info.
+    Modern data-driven applications require that databases support fast cross-model analytical queries. Achieving fast analytical queries in a database system is challenging since they are usually scan-intensive (i.e. they need to intensively scan over a large number of records) which results in huge I/O and memory costs. And it becomes tougher when the analytical queries are cross-model. It is hard to accelerate cross-model analytical queries in existing databases due to the lack of appropriate storage layout and efficient query processing techniques. In this paper, we present QUEST：(QUery Evaluation Scheme Towards scan-intensive cross-model analysis) to push scan-intensive queries down to unified columnar storage layout and seamlessly deliver payloads across different data models. QUEST employs a columnar data layout to unify the representation of multi-model data. Then, a novel index structure named Skip-Tree is developed for QUEST to enable the query evaluation more efficient. With the helps of two pair-wise bitset-based operations coupled with Skip-Tree, the scan of most irrelevant instances can be pruned so as to avoid the giant intermediate result, thus reducing query response latency and saving the computational resources significantly when evaluating scan-intensive cross-model analysis. The proposed methods are implemented on an open-source platform. Through comprehensive theoretical analysis and extensive experiments, we demonstrate that QUEST improves the performance by 3.7x-178.2x compared to state-of-the-art multi-model databases when evaluating scan-intensive cross-model analytical queries.
 
 Important Implementations
 -----
