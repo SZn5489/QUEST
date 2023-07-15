@@ -2,19 +2,17 @@ QUEST
 =====
 Introduction
 -----
-    Modern data-driven applications require that databases support fast cross-model analytical queries. Achieving fast analytical queries in a database system is challenging since they are usually scan-intensive (i.e. they need to intensively scan over a large number of records) which results in huge I/O and memory costs. And it becomes tougher when the analytical queries are cross-model. It is hard to accelerate cross-model analytical queries in existing databases due to the lack of appropriate storage layout and efficient query processing techniques. In this paper, we present QUEST：(QUery Evaluation Scheme Towards scan-intensive cross-model analysis) to push scan-intensive queries down to unified columnar storage layout and seamlessly deliver payloads across different data models. QUEST employs a columnar data layout to unify the representation of multi-model data. Then, a novel index structure named Skip-Tree is developed for QUEST to enable the query evaluation more efficient. With the helps of two pair-wise bitset-based operations coupled with Skip-Tree, the scan of most irrelevant instances can be pruned so as to avoid the giant intermediate result, thus reducing query response latency and saving the computational resources significantly when evaluating scan-intensive cross-model analysis. The proposed methods are implemented on an open-source platform. Through comprehensive theoretical analysis and extensive experiments, we demonstrate that QUEST improves the performance by 3.7x-178.2x compared to state-of-the-art multi-model databases when evaluating scan-intensive cross-model analytical queries.
+   This project, QUEST(Query Evaluation Scheme Towards scan-intensive cross-model analysis), aims at pushing scan-intensive queries down to unified columnar storage layout and seamlessly deliver payloads across different data models. The key idea behind QUEST is to leverage columnar storage layout and advanced column-oriented techniques to develop customi zed evaluation scheme for scan-intensive cross-model queries. 
+The proposed methods are implemented on an open-source platform. Through comprehensive theoretical analysis and extensive experiments, we demonstrate that QUEST improves the performance by 3.7x-178.2x compared to state-of-the-art multi-model databases when evaluating scan-intensive cross-model analytical queries.
 
 Important Implementations
 -----
 
-1.`cores.avro.FilterBatchColumnReader`, the class that reads the cores files with filters. It conducts the columns about filters, initializes a bitset, delivers it through the scheme path, and then reads the fetching columns according the bitset.
+1.We first unify the logical data model of the relational, nested document-based data and property graph-based data based on the extended recursive definition of nested tree-structured data. And develop a lossless representation of record structure in a columnar format. \textit{Counter} and \textit{Indicator} arrays stored in columns are utilized to maintain the mapping information between adjacent layers in nested model. A novel index structure \textit{Skip-Tree} is developed to preserve the pre-computed mapping information across nested layers.
 
-2.`cores.avro.FilterOperator`,the interface that defines two functions of filters, getName() and isMatch(T t). getName() returns the name of the filter column, isMatch(T t) returns whether t is hitted by the filter.
+2.We present a novel column-oriented skipping scheme based on \textit{Skip-Tree} structure and bitset-based query storage pushdown strategy, generalized by a two pair-wise operations, $\textit{SkipUp}$ and $\textit{SkipDown}$. It can significantly reduce both I/O and CPU overheads when processing scan-intensive analytical workloads by pruning the scan of irrelevant instances. We also introduce a way to seamlessly deliver query payloads across different models.
 
-3.`cores.avro.mapreduce.NeciFilterRecordReader`, the class that extends org.apache.hadoop.mapreduce.RecordReader, uses cores.avro.FilterBatchColumnReader to read the cores files in HDFS.
-
-4.`cores.core.UnionOutputBuffer/UnionInputBuffer`, the class that writes/reads the columns with UNION type.
-
+3.We delve into the query evaluation costs of QUEST and establish a comprehensive cost model that encompasses Modern data-driven applications require that databases support fast cross-model analytical queries. 
 test
 
 Contains the test framework. Several tests are making sure the examples runs. The test framework uses TestNG.
