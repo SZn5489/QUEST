@@ -8,11 +8,11 @@ The proposed methods are implemented on an open-source platform. Through compreh
 Important Implementations
 -----
 
-1.We first unify the logical data model of the relational, nested document-based data and property graph-based data based on the extended recursive definition of nested tree-structured data. And develop a lossless representation of record structure in a columnar format. \textit{Counter} and \textit{Indicator} arrays stored in columns are utilized to maintain the mapping information between adjacent layers in nested model. A novel index structure \textit{Skip-Tree} is developed to preserve the pre-computed mapping information across nested layers.
+1. We first unify the logical data model of the relational, nested document-based data and property graph-based data based on the extended recursive definition of nested tree-structured data. And develop a lossless representation of record structure in a columnar format. _Counter_ and _Indicator_ arrays stored in columns are utilized to maintain the mapping information between adjacent layers in nested model. A novel index structure \textit{Skip-Tree} is developed to preserve the pre-computed mapping information across nested layers.
 
-2.We present a novel column-oriented skipping scheme based on \textit{Skip-Tree} structure and bitset-based query storage pushdown strategy, generalized by a two pair-wise operations, $\textit{SkipUp}$ and $\textit{SkipDown}$. It can significantly reduce both I/O and CPU overheads when processing scan-intensive analytical workloads by pruning the scan of irrelevant instances. We also introduce a way to seamlessly deliver query payloads across different models.
+2. We present a novel column-oriented skipping scheme based on _Skip-Tree_ structure and bitset-based query storage pushdown strategy, generalized by a two pair-wise operations, _SkipUp_ and _SkipDown_. It can significantly reduce both I/O and CPU overheads when processing scan-intensive analytical workloads by pruning the scan of irrelevant instances. We also introduce a way to seamlessly deliver query payloads across different models.
 
-3.We delve into the query evaluation costs of QUEST and establish a comprehensive cost model that encompasses Modern data-driven applications require that databases support fast cross-model analytical queries. 
+3. We delve into the query evaluation costs of QUEST and establish a comprehensive cost model that encompasses Modern data-driven applications require that databases support fast cross-model analytical queries. 
 test
 
 Contains the test framework. Several tests are making sure the examples runs. The test framework uses TestNG.
