@@ -1,1 +1,1 @@
-**这里存放处理后的tbl文件**
+Data table in csv forder will be processed by *csvToTbl.py* script in graph/python/ forder and the processed files called *.tbl should be stored here.

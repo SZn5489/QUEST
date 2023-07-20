@@ -1,1 +1,1 @@
-**这里存放所有的document型表文件（*.tbl）**
+All the document table files (*.tbl) are stored here.

@@ -1,1 +1,1 @@
-**这里存放所有的csv原文件，不区分dynamic和static**
+All the original csv files are stored here, regardless of dynamic or static.
