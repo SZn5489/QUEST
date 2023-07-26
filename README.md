@@ -76,4 +76,84 @@ QUEST takes 17.83 GB disk space to store 20.24 GB multi-model data which include
 
 Appendex: Workloads and their parameters
 -----
-
+### Q1
+```sql
+select Person 
+From Ralation as R, Document as D, Graph as G
+where R.Credit_Score in 500-550 and R.Wallet_Balances in 10000-15000
+  and D.word = 'secular' and D.budget in 10000-15000
+  and G.person.Studyat...Country = 'China' and G.person.likes...tag.tagclass = 'Person'
+```
+### Q2
+```sql
+select Person 
+From Ralation as R, Document as D, Graph as G
+where R.Credit_Score in 500-550 and R.Wallet_Balances in 10000-15000 and R.fname = 'Lin'
+  and D.word = 'secular' 
+  and G.person.likes...tag.tagclass ='Person'
+```
+### Q3
+```sql
+select Person 
+From Ralation as R, Document as D, Graph as G
+where R.Credit_Score in 500-550
+  and D.word = 'secular' and D.budget in 10000-15000 and D.Date in 2018-01-01 00:00:00-2020-01-01 00:00:00
+  and G.person.likes...tag.tagclass ='Person'
+```
+### Q4
+```sql
+select Person 
+From Ralation as R, Document as D, Graph as G
+where R.Credit_Score in 500-550
+  and D.word = 'secular'
+  and G.person.likes...tag.tagclass = 'Person' and G.person.Studyat...Country = 'China' and G.person.knows.person.hasInterest.tag.tagclass = 'Person'
+```
+### Q5
+```sql
+select Person 
+From Ralation as R, Document as D, Graph as G
+where R.Credit_Score in 500-550 and R.Wallet_Balances in 10000-15000
+      D.word = 'secular' and D.budget in 10000-15000 
+```
+### Q6
+```sql
+select Person 
+From Ralation as R, Document as D, Graph as G
+where R.Credit_Score in 500-550 and R.Wallet_Balances in 10000-15000
+  and G.person.Studyat...Country = 'China' and G.person.likes...tag.tagclass = 'Person' 
+```
+### Q7
+```sql
+select Person 
+From Ralation as R, Document as D, Graph as G
+where D.word = 'secular' and D.budget in 10000-15000
+  and G.person.Studyat...Country = 'China' and G.person.likes...tag.tagclass 'Person'
+```
+### Q8
+```sql
+select Person 
+From Ralation as R, Document as D, Graph as G
+where R.Credit_Score in 300-800 and R.Wallet_Balances in 5000-50000
+  and D.word = 'secular' and D.budget in 5000-25000
+  and G.person.Studyat...Country = 'China' and G.person.likes...tag.tagclass = 'Person'
+```
+### Q9
+```sql
+select Person 
+From Ralation as R, Document as D, Graph as G
+where R.Credit_Score in 500-550 and R.Wallet_Balances in 10000-15000
+  and D.Fee in 5000-8000 and D.Date in 2018-01-01 00:00:00-2020-01-01 00:00:00
+  and G.person.Studyat.university.name = 'Central_University_of_Karnataka' and G.person.hasInterest.tag = 'Time3'
+```
+### Q10
+```sql
+select Advertiser 
+From Document as D
+where D.word = 'secular' and D.budget in 10000-15000 and D.PID = 17592186134210
+```
+### Q11
+```sql
+select Person 
+From Graph as G
+where  G.person.Studyat...Country = 'China' and G.person.likes...tag.tagclass = 'Person' and G.person.knows.person.hasInterest.tag.tagclass = 'Person'
+```
